@@ -1,10 +1,19 @@
 package com.example.ProyectoIntegrador.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Turno {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Integer id;
+    @ManyToOne
+    @JoinColumn(name= "paciente_id")
     private Paciente paciente;
+    @ManyToOne
+    @JoinColumn(name= "odontologo_id")
     private Odontologo odontologo;
     private LocalDateTime fechaHora;
 

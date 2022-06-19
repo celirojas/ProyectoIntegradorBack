@@ -1,13 +1,18 @@
 package com.example.ProyectoIntegrador.model;
 
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Paciente {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Integer ID;
     private String nombre;
     private String apellido;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "domicilio_id")
     private Domicilio domicilio;
 
     //Constructores

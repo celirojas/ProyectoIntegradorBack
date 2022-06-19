@@ -4,9 +4,12 @@ import com.example.ProyectoIntegrador.model.Paciente;
 import com.example.ProyectoIntegrador.repository.PacienteRepository;
 import com.example.ProyectoIntegrador.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class PacienteServiceImpl implements PacienteService {
     @Autowired
     private static PacienteRepository pacienteRepository;

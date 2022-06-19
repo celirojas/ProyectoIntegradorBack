@@ -4,9 +4,11 @@ import com.example.ProyectoIntegrador.model.Odontologo;
 import com.example.ProyectoIntegrador.repository.OdontologoRepository;
 import com.example.ProyectoIntegrador.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OdontologoServiceImpl implements OdontologoService {
     @Autowired
     private static OdontologoRepository odontologoRepository;

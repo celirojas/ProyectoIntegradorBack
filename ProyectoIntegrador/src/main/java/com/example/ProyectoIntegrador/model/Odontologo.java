@@ -1,9 +1,15 @@
 package com.example.ProyectoIntegrador.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Odontologo {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Integer ID;
     private String nombre;
     private String apellido;
