@@ -4,17 +4,21 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="turnos")
 public class Turno {
 
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Integer id;
+
     @ManyToOne
-    @JoinColumn(name= "paciente_id")
+    @JoinColumn(name= "paciente_id", nullable = false) //Clave foránea. Nunca podrá ser nula
     private Paciente paciente;
+
     @ManyToOne
-    @JoinColumn(name= "odontologo_id")
+    @JoinColumn(name= "odontologo_id", nullable = false) //Clave foránea. Nunca podrá ser nula
     private Odontologo odontologo;
+
     private LocalDateTime fechaHora;
 
     //Constructores
@@ -34,6 +38,7 @@ public class Turno {
         this.odontologo = odontologo;
         this.fechaHora = fechaHora;
     }
+
 
     //Getters y setters
 

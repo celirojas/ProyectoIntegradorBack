@@ -1,39 +1,20 @@
-package com.example.ProyectoIntegrador.model;
+package com.example.ProyectoIntegrador.model.dto;
 
-import javax.persistence.*;
+import com.example.ProyectoIntegrador.model.Paciente;
 
-@Entity
-public class Domicilio {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+public class DomicilioDTO {
     private Integer ID;
     private String calle;
     private int numero;
     private String localidad;
     private String provincia;
 
-    @OneToOne
-    //JsonIgnore y mappedBy
+    //JsonIgnore
     private Paciente paciente;
-
-    //Constructores
-
-
-    public Domicilio(String calle, int numero, String localidad, String provincia, Paciente paciente) {
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
-        this.paciente = paciente;
-    }
-
-    public Domicilio() {
-    }
 
     //Métodos accesores
 
-    public int getId() {
+    public Integer getID() {
         return ID;
     }
     public String getCalle() {
@@ -66,5 +47,13 @@ public class Domicilio {
 
     public void setProvincia(String provincia) {
         this.provincia = provincia;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 }
