@@ -30,6 +30,13 @@ public class Odontologo {
         this.turnos = turnos;
     }
 
+    public Odontologo(Integer ID, String nombre, String apellido, String matricula) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+    }
+
     public Odontologo() {
     }
 

@@ -6,17 +6,12 @@ import com.example.ProyectoIntegrador.model.Paciente;
 import java.time.LocalDateTime;
 
 public class TurnoDTO {
-    private Integer ID;
+
     private LocalDateTime fechaHora;
     private Odontologo odontologo;
     private Paciente paciente;
 
     //Métodos accesores
-
-    public Integer getID() {
-        return ID;
-    }
-
     public LocalDateTime getFechaHora() {
         return fechaHora;
     }

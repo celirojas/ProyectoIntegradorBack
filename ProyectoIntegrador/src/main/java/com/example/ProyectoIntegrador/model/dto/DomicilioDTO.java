@@ -1,22 +1,20 @@
 package com.example.ProyectoIntegrador.model.dto;
 
 import com.example.ProyectoIntegrador.model.Paciente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class DomicilioDTO {
-    private Integer ID;
+
     private String calle;
     private int numero;
     private String localidad;
     private String provincia;
 
-    //JsonIgnore
+    @JsonIgnore
     private Paciente paciente;
 
     //Métodos accesores
 
-    public Integer getID() {
-        return ID;
-    }
     public String getCalle() {
         return calle;
     }

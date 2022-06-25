@@ -18,7 +18,7 @@ import java.util.Set;
 @Service
 public class TurnoServiceImpl implements TurnoService {
     @Autowired
-    private static TurnoRepository turnoRepository;
+    TurnoRepository turnoRepository;
 
     @Autowired
     ObjectMapper mapper;

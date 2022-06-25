@@ -19,7 +19,7 @@ import java.util.Set;
 public class PacienteServiceImpl implements PacienteService {
 
     @Autowired
-    private static PacienteRepository pacienteRepository;
+    PacienteRepository pacienteRepository;
 
     @Autowired
     ObjectMapper mapper;

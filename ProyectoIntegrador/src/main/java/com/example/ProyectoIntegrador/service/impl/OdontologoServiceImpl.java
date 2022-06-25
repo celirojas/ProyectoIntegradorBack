@@ -15,7 +15,7 @@ import java.util.Set;
 @Service
 public class OdontologoServiceImpl implements OdontologoService {
     @Autowired
-    private static OdontologoRepository odontologoRepository;
+    OdontologoRepository odontologoRepository;
 
     @Autowired
     ObjectMapper mapper;
@@ -43,6 +43,13 @@ public class OdontologoServiceImpl implements OdontologoService {
     @Override
     public OdontologoDTO modificar(OdontologoDTO odontologoDTO) {
         guardarOdontologo(odontologoDTO);
+        return odontologoDTO;
+    }
+
+    @Override
+    public OdontologoDTO modificarAlt(OdontologoDTO odontologoDTO, Integer id) {
+        Odontologo odontologo = new Odontologo(id, odontologoDTO.getNombre(), odontologoDTO.getApellido(), odontologoDTO.getMatricula());
+        odontologoRepository.save(odontologo);
         return odontologoDTO;
     }
 

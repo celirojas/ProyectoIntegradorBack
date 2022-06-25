@@ -2,16 +2,13 @@ package com.example.ProyectoIntegrador.model.dto;
 
 public class OdontologoDTO {
 
-    private Integer ID;
+
     private String nombre;
     private String apellido;
     private String matricula;
 
     //Metodos accesores
 
-    public Integer getId() {
-        return ID;
-    }
     public String getNombre() {
         return nombre;
     }

@@ -5,7 +5,7 @@ import com.example.ProyectoIntegrador.model.Domicilio;
 import java.time.LocalDate;
 
 public class PacienteDTO {
-    private Integer ID;
+
     private String nombre;
     private String apellido;
     private String dni;
@@ -15,10 +15,6 @@ public class PacienteDTO {
     private Domicilio domicilio;
 
     //Métodos accesores
-
-    public Integer getId() {
-        return ID;
-    }
 
     public String getNombre() {
         return nombre;
