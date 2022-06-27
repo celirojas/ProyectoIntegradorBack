@@ -1,20 +1,26 @@
 package com.example.ProyectoIntegrador.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name="domicilios")
 public class Domicilio {
 
+    /*----------------------------------Atributos------------------------------------*/
+
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private Integer ID;
+    @SequenceGenerator(name = "domicilio_sequence", sequenceName = "domicilio_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "domicilio_sequence")
+    private Integer id;
     private String calle;
     private int numero;
     private String localidad;
     private String provincia;
 
-    @OneToOne
-    //JsonIgnore y mappedBy
+    @OneToOne(mappedBy = "domicilio")
+    @JsonIgnore
     private Paciente paciente;
 
     //Constructores
@@ -33,9 +39,15 @@ public class Domicilio {
 
     //Métodos accesores
 
-    public int getId() {
-        return ID;
+
+    public Integer getId() {
+        return id;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getCalle() {
         return calle;
     }

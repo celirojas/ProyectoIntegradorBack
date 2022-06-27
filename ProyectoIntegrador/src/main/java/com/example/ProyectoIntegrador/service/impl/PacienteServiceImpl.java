@@ -1,22 +1,19 @@
 package com.example.ProyectoIntegrador.service.impl;
 
-import com.example.ProyectoIntegrador.model.Odontologo;
 import com.example.ProyectoIntegrador.model.Paciente;
-import com.example.ProyectoIntegrador.model.dto.OdontologoDTO;
-import com.example.ProyectoIntegrador.model.dto.PacienteDTO;
 import com.example.ProyectoIntegrador.repository.PacienteRepository;
 import com.example.ProyectoIntegrador.service.PacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 @Service
 public class PacienteServiceImpl implements PacienteService {
+
+    //Inyección de dependencia: para poder utilizar los métodos de nuestra interface Repository
 
     @Autowired
     PacienteRepository pacienteRepository;
@@ -24,37 +21,49 @@ public class PacienteServiceImpl implements PacienteService {
     @Autowired
     ObjectMapper mapper;
 
+    //Métodos CRUD
+
+    //Guardar
     @Override
-    public PacienteDTO agregar(PacienteDTO pacienteDTO) {
-        guardarPaciente(pacienteDTO);
-        return pacienteDTO;
+    public Paciente agregar(Paciente paciente) {
+        pacienteRepository.save(paciente);
+        return paciente;
     }
 
+    //Listar
     @Override
-    public Set<PacienteDTO> listar() {
-        List<Paciente> pacientes = pacienteRepository.findAll();
-        Set<PacienteDTO> pacienteDTOS = new HashSet<>();
-
-        for (Paciente paciente: pacientes) {
-            pacienteDTOS.add(mapper.convertValue(paciente, PacienteDTO.class));
-        }
-        return pacienteDTOS;
+    public List<Paciente> listar() {
+        return pacienteRepository.findAll();
     }
 
+    //Modificar por id
     @Override
-    public PacienteDTO modificar(PacienteDTO pacienteDTO) {
-        guardarPaciente(pacienteDTO);
-        return pacienteDTO;
+    public Paciente modificar(Paciente paciente) {
+        if(buscarPorId(paciente.getId()) != null)
+            return pacienteRepository.save(paciente);
+        else
+            return null;
     }
 
+    //Eliminar por id
     @Override
     public void eliminar(Integer id) {
         pacienteRepository.deleteById(id);
     }
 
-    //Método genérico para guardar paciente
-    public void guardarPaciente(PacienteDTO pacienteDTO){
-        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
-        pacienteRepository.save(paciente);
+    //Buscar por id
+    @Override
+    public Paciente buscarPorId(Integer id) {
+        Paciente pacienteEncontrado = pacienteRepository.findById(id).orElse(null);
+        return pacienteEncontrado;
     }
+
+
+
+
+    //Método genérico para guardar paciente
+//    public void guardarPaciente(PacienteDTO pacienteDTO){
+//        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
+//        pacienteRepository.save(paciente);
+//    }
 }

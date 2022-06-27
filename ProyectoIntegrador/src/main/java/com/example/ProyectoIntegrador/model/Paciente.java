@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,23 +13,27 @@ import java.util.Set;
 
 public class Paciente {
 
+    /*----------------------------------Atributos------------------------------------*/
+
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private Integer ID;
+    @SequenceGenerator(name = "paciente_sequence", sequenceName = "paciente_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente_sequence")
+    private Integer id;
 
     private String nombre;
     private String apellido;
     private String dni;
 
+
     private LocalDate fechaAlta;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
     @JoinColumn(name= "domicilio_id")
     private Domicilio domicilio;
 
-    @OneToMany(mappedBy = "paciente") //Cómo se llama la propiedad en la clase con la que me estoy relacionando.
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY) //Cómo se llama la propiedad en la clase con la que me estoy relacionando.
     @JsonIgnore
-    private Set<Turno> turnos;
+    private Set<Turno> turnos = new HashSet<>();
 
     //Constructores
 
@@ -47,6 +52,14 @@ public class Paciente {
 
     //Métodos accesores
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

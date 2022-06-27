@@ -10,16 +10,19 @@ import java.util.Set;
 @Table(name="odontologos")
 public class Odontologo {
 
+    /*----------------------------------Atributos------------------------------------*/
+
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private Integer ID;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "odontologo_sequence")
+    @SequenceGenerator(name = "odontologo_sequence", sequenceName = "odontologo_sequence", allocationSize = 1)
+    private Integer id;
     private String nombre;
     private String apellido;
     private String matricula;
 
-    @OneToMany(mappedBy = "odontologo")
+    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY)
     @JsonIgnore
-    private Set<Turno> turnos;
+    private Set<Turno> turnos = new HashSet<>();
 
     //Constructores
 
@@ -30,8 +33,8 @@ public class Odontologo {
         this.turnos = turnos;
     }
 
-    public Odontologo(Integer ID, String nombre, String apellido, String matricula) {
-        this.ID = ID;
+    public Odontologo(Integer id, String nombre, String apellido, String matricula) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
@@ -42,8 +45,9 @@ public class Odontologo {
 
     //Métodos accesores
 
-    public Integer getID() {
-        return ID;
+
+    public Integer getId() {
+        return id;
     }
 
     public String getNombre() {

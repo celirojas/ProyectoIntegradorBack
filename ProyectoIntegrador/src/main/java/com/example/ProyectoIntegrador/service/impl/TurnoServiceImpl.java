@@ -1,8 +1,6 @@
 package com.example.ProyectoIntegrador.service.impl;
 
-import com.example.ProyectoIntegrador.model.Paciente;
 import com.example.ProyectoIntegrador.model.Turno;
-import com.example.ProyectoIntegrador.model.dto.PacienteDTO;
 import com.example.ProyectoIntegrador.model.dto.TurnoDTO;
 import com.example.ProyectoIntegrador.repository.TurnoRepository;
 import com.example.ProyectoIntegrador.service.TurnoService;
@@ -12,11 +10,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
 @Service
 public class TurnoServiceImpl implements TurnoService {
+
     @Autowired
     TurnoRepository turnoRepository;
 
@@ -40,7 +40,7 @@ public class TurnoServiceImpl implements TurnoService {
         return turnoDTOS;
     }
 
-    @Override
+    //@Override
     public TurnoDTO modificar(TurnoDTO turnoDTO) {
         guardarTurno(turnoDTO);
         return turnoDTO;
@@ -49,6 +49,20 @@ public class TurnoServiceImpl implements TurnoService {
     @Override
     public void eliminar(Integer id) {
         turnoRepository.deleteById(id);
+    }
+
+
+    @Override
+    public TurnoDTO buscarPorId(Integer id){
+        Optional<Turno> turno = turnoRepository.findById(id);
+        TurnoDTO turnoDTO = null;
+
+        if(turno.isPresent()){
+            turnoDTO = mapper.convertValue(turno, TurnoDTO.class);
+        } else{
+            System.out.println("El turno buscado no existe.");
+        }
+        return turnoDTO;
     }
 
 

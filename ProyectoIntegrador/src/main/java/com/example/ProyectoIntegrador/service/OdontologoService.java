@@ -1,14 +1,25 @@
 package com.example.ProyectoIntegrador.service;
 
 
-import com.example.ProyectoIntegrador.model.dto.OdontologoDTO;
-import java.util.Set;
+import com.example.ProyectoIntegrador.model.Odontologo;
+
+import java.util.List;
 
 public interface OdontologoService {
 
-    OdontologoDTO agregar(OdontologoDTO odontologoDTO);
-    Set<OdontologoDTO> listar();
-    OdontologoDTO modificar(OdontologoDTO odontologoDTO);
-    OdontologoDTO modificarAlt(OdontologoDTO odontologoDTO, Integer id);
+    //Guardar
+
+    Odontologo agregar(Odontologo odontologo);
+
+    //Listar
+    List<Odontologo> listar();
+
+    //Modificar por id
+    Odontologo modificar(Odontologo odontologo);
+
+    //Eliminar por id
     void eliminar(Integer id);
+
+    //Buscar por id
+    Odontologo buscarPorId(Integer id);
 }

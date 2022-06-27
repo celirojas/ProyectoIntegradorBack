@@ -7,15 +7,18 @@ import java.time.LocalDateTime;
 @Table(name="turnos")
 public class Turno {
 
+    /*----------------------------------Atributos------------------------------------*/
+
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "turno_sequence", sequenceName = "turno_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "turno_sequence")
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "paciente_id", nullable = false) //Clave foránea. Nunca podrá ser nula
     private Paciente paciente;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "odontologo_id", nullable = false) //Clave foránea. Nunca podrá ser nula
     private Odontologo odontologo;
 
@@ -42,8 +45,13 @@ public class Turno {
 
     //Getters y setters
 
+
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Paciente getPaciente() {
