@@ -8,7 +8,7 @@ public interface TurnoService {
 
 
     //Guardar
-    TurnoDTO agregar(TurnoDTO turnoDTO);
+    void agregar(TurnoDTO turnoDTO);
 
     //Listar
     Set<TurnoDTO> listar();

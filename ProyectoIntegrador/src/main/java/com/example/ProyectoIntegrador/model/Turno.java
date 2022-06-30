@@ -14,13 +14,14 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "turno_sequence")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name= "paciente_id", nullable = false) //Clave foránea. Nunca podrá ser nula
     private Paciente paciente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name= "odontologo_id", nullable = false) //Clave foránea. Nunca podrá ser nula
     private Odontologo odontologo;
+
 
     private LocalDateTime fechaHora;
 

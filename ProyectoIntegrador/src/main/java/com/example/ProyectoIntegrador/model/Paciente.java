@@ -1,7 +1,9 @@
 package com.example.ProyectoIntegrador.model;
 
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,14 +26,16 @@ public class Paciente {
     private String apellido;
     private String dni;
 
-
     private LocalDate fechaAlta;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+
+    //fetch= FetchType.LAZY
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "domicilio_id")
     private Domicilio domicilio;
 
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY) //Cómo se llama la propiedad en la clase con la que me estoy relacionando.
+    //fetch = FetchType.LAZY
+    @OneToMany(mappedBy = "paciente") //Cómo se llama la propiedad en la clase con la que me estoy relacionando.
     @JsonIgnore
     private Set<Turno> turnos = new HashSet<>();
 
@@ -55,10 +59,6 @@ public class Paciente {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNombre() {

@@ -2,6 +2,7 @@ package com.example.ProyectoIntegrador.model.dto;
 
 import com.example.ProyectoIntegrador.model.Odontologo;
 import com.example.ProyectoIntegrador.model.Paciente;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoDTO {
+
     private Integer id;
     private LocalDateTime fechaHora;
     private Odontologo odontologo;

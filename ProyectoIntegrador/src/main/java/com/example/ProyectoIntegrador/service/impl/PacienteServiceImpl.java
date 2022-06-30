@@ -3,7 +3,7 @@ package com.example.ProyectoIntegrador.service.impl;
 import com.example.ProyectoIntegrador.model.Paciente;
 import com.example.ProyectoIntegrador.repository.PacienteRepository;
 import com.example.ProyectoIntegrador.service.PacienteService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +18,6 @@ public class PacienteServiceImpl implements PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
 
-    @Autowired
-    ObjectMapper mapper;
 
     //Métodos CRUD
 
@@ -50,6 +48,7 @@ public class PacienteServiceImpl implements PacienteService {
     public void eliminar(Integer id) {
         pacienteRepository.deleteById(id);
     }
+
 
     //Buscar por id
     @Override

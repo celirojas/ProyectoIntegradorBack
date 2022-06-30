@@ -22,8 +22,9 @@ public class TurnoController {
     }
 
     @PostMapping
-    public ResponseEntity<TurnoDTO> agregarTurno(@RequestBody TurnoDTO turno){
-        return ResponseEntity.ok(turnoService.agregar(turno));
+    public ResponseEntity<?> agregarTurno(@RequestBody TurnoDTO turno){
+        turnoService.agregar(turno);
+        return ResponseEntity.status(HttpStatus.OK).body("Se ha guardado el turno correctamente");
     }
 
     @DeleteMapping("/{id}")

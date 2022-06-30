@@ -2,6 +2,8 @@ package com.example.ProyectoIntegrador.service.impl;
 
 import com.example.ProyectoIntegrador.model.Turno;
 import com.example.ProyectoIntegrador.model.dto.TurnoDTO;
+import com.example.ProyectoIntegrador.repository.OdontologoRepository;
+import com.example.ProyectoIntegrador.repository.PacienteRepository;
 import com.example.ProyectoIntegrador.repository.TurnoRepository;
 import com.example.ProyectoIntegrador.service.TurnoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,13 +23,28 @@ public class TurnoServiceImpl implements TurnoService {
     TurnoRepository turnoRepository;
 
     @Autowired
+    PacienteRepository pacienteRepository;
+
+    @Autowired
+    OdontologoRepository odontologoRepository;
+
+    @Autowired
     ObjectMapper mapper;
 
+
+
+    //Métodos CRUD
+
+
+    //GUARDAR
+
     @Override
-    public TurnoDTO agregar(TurnoDTO turnoDTO) {
-        guardarTurno(turnoDTO);
-        return turnoDTO;
+    public void agregar(TurnoDTO turnoDTO) {
+        Turno turno = mapper.convertValue(turnoDTO, Turno.class);
+        turnoRepository.save(turno);
     }
+
+    //LISTAR
 
     @Override
     public Set<TurnoDTO> listar() {
@@ -40,17 +57,23 @@ public class TurnoServiceImpl implements TurnoService {
         return turnoDTOS;
     }
 
+    //MODIFICAR
+
     //@Override
-    public TurnoDTO modificar(TurnoDTO turnoDTO) {
-        guardarTurno(turnoDTO);
-        return turnoDTO;
-    }
+//    public TurnoDTO modificar(TurnoDTO turnoDTO) {
+//        guardarTurno(turnoDTO);
+//        return turnoDTO;
+//    }
+
+    //ELIMINAR
 
     @Override
     public void eliminar(Integer id) {
         turnoRepository.deleteById(id);
     }
 
+
+    //BUSCAR POR ID
 
     @Override
     public TurnoDTO buscarPorId(Integer id){
@@ -67,8 +90,11 @@ public class TurnoServiceImpl implements TurnoService {
 
 
     //Método genérico para guardar turno
-    public void guardarTurno(TurnoDTO turnoDTO){
+
+    /*public void guardarTurno(TurnoDTO turnoDTO){
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
         turnoRepository.save(turno);
-    }
+
+        */
 }
+
