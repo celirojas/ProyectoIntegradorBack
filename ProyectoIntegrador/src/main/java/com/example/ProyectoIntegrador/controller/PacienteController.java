@@ -40,7 +40,7 @@ public class PacienteController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarPaciente(@PathVariable Integer id){
         pacienteService.eliminar(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Se eliminó el paciente.");
+        return ResponseEntity.status(HttpStatus.OK).body("Se eliminó el paciente con el id: " + id);
     }
 
 
@@ -54,10 +54,10 @@ public class PacienteController {
 
 
     //Modificar
-    @PutMapping("/{id}")
-    public ResponseEntity<?> modificarPaciente(@RequestBody Paciente paciente, @PathVariable Integer id){
+    @PutMapping
+    public ResponseEntity<?> modificarPaciente(@RequestBody Paciente paciente){
         pacienteService.modificar(paciente);
-        return ResponseEntity.status(HttpStatus.OK).body("Se modifico el paciente con el id: " + id);
+        return ResponseEntity.status(HttpStatus.OK).body("Se modifico el paciente con el id: " + paciente.getId());
     }
 
 

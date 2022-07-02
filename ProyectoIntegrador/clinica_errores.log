@@ -1,0 +1,13 @@
+[2022-06-3010:41:01] [ ERROR] [GlobalExceptionHandler:18] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "a"
+[2022-07-0109:30:27] [ ERROR] [GlobalExceptionHandler:18] The given id must not be null!; nested exception is java.lang.IllegalArgumentException: The given id must not be null!
+[2022-07-0110:12:17] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:12:39] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:14:21] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:14:33] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:14:37] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:17:57] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:18:21] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:19:03] [ ERROR] [GlobalExceptionHandler:18] Request method 'GET' not supported
+[2022-07-0110:22:00] [ ERROR] [GlobalExceptionHandler:18] Request method 'POST' not supported
+[2022-07-0211:22:21] [ ERROR] [GlobalExceptionHandler:18] JSON parse error: Cannot deserialize value of type `java.time.LocalDate` from String "26-07-2020": Failed to deserialize java.time.LocalDate: (java.time.format.DateTimeParseException) Text '26-07-2020' could not be parsed at index 0; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.time.LocalDate` from String "26-07-2020": Failed to deserialize java.time.LocalDate: (java.time.format.DateTimeParseException) Text '26-07-2020' could not be parsed at index 0
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 5, column: 18] (through reference chain: com.example.ProyectoIntegrador.model.Paciente["fechaAlta"])

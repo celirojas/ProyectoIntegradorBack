@@ -35,7 +35,7 @@ public class OdontologoServiceImpl implements OdontologoService {
 
     //Modificar por id
     @Override
-    public Odontologo modificar(Odontologo odontologo) { //buscar saveAndFlush
+    public Odontologo modificar(Odontologo odontologo) {
         if(buscarPorId(odontologo.getId()) != null)
             return odontologoRepository.save(odontologo);
         else

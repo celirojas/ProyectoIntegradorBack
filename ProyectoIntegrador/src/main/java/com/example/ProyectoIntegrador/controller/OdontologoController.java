@@ -51,10 +51,10 @@ public class OdontologoController {
     }
 
     //Modificar
-    @PutMapping("/{id}")
-    public ResponseEntity<?> modificarOdontologo(@RequestBody Odontologo odontologo, @PathVariable Integer id){
+    @PutMapping
+    public ResponseEntity<?> modificarOdontologo(@RequestBody Odontologo odontologo){
         odontologoService.modificar(odontologo);
-        return ResponseEntity.status(HttpStatus.OK).body("Se modifico el odontologo con el id: " + id);
+        return ResponseEntity.status(HttpStatus.OK).body("Se modifico el odontologo con el id: " + odontologo.getId());
     }
 
 

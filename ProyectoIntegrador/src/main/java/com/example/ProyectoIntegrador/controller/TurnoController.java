@@ -38,5 +38,4 @@ public class TurnoController {
         return ResponseEntity.ok(turnoService.buscarPorId(id));
     }
 
-    //Faltan los put
 }
