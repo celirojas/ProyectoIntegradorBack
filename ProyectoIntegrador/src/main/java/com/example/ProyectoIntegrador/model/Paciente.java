@@ -2,7 +2,12 @@ package com.example.ProyectoIntegrador.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 
 import javax.persistence.*;
@@ -29,18 +34,26 @@ public class Paciente {
     private LocalDate fechaAlta;
 
 
-    //fetch= FetchType.LAZY
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "domicilio_id")
     private Domicilio domicilio;
 
-    //fetch = FetchType.LAZY
+
     @OneToMany(mappedBy = "paciente") //Cómo se llama la propiedad en la clase con la que me estoy relacionando.
     @JsonIgnore
     private Set<Turno> turnos = new HashSet<>();
 
     //Constructores
 
+
+    public Paciente(String nombre, String apellido, String dni, LocalDate fechaAlta, Domicilio domicilio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaAlta = fechaAlta;
+        this.domicilio = domicilio;
+    }
 
     public Paciente(String nombre, String apellido, String dni, LocalDate fechaAlta, Domicilio domicilio, Set<Turno> turnos) {
         this.nombre = nombre;

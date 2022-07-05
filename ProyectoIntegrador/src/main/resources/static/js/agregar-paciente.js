@@ -6,7 +6,7 @@ $(document).ready(function() {
             nombre : $("#nombre").val(),
             apellido :  $("#apellido").val(),
             dni : $("#dni").val(),
-            fechaIngreso : $("#fechaIngreso").val(),
+            fechaAlta : $("#fechaAlta").val(),
             domicilio : {
                 calle : $("#calle").val(),
                 numero : $("#numero").val(),
@@ -15,7 +15,6 @@ $(document).ready(function() {
             }
         }
 
-        console.log(formData);
 
         $.ajax({
             url: '/pacientes',
@@ -52,7 +51,7 @@ $(document).ready(function() {
         $("#nombre").val("");
         $("#apellido").val("");
         $("#dni").val("");
-        $("#fechaIngreso").val("");
+        $("#fechaAlta").val("");
         $("#calle").val("");
         $("#numero").val("");
         $("#localidad").val("");

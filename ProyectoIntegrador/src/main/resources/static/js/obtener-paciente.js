@@ -25,7 +25,7 @@ window.addEventListener('load', function (event) {
             <td class=td_nombre>${paciente.nombre}</td>
             <td class=td_apellido>${paciente.apellido} </td>
             <td class=td_dni>${paciente.dni}</td>
-            <td class=td_fecha>${paciente.fechaIngreso}</td>
+            <td class=td_fecha>${paciente.fechaAlta}</td>
             <td class=td_direccion>${paciente.domicilio.calle} ${paciente.domicilio.numero}</td>
             <td class=td_localidad>${paciente.domicilio.localidad}</td>
             <td class=td_provincia>${paciente.domicilio.provincia}</td>
