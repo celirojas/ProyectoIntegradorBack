@@ -20,7 +20,10 @@ public class OdontologoServiceImpl implements OdontologoService {
     @Autowired
     ObjectMapper mapper;
 
+    /*-------------------------Métodos CRUD------------------------*/
 
+
+    //Guardar
     @Override
     public Odontologo agregar(Odontologo odontologo) {
         odontologoRepository.save(odontologo);
@@ -33,6 +36,7 @@ public class OdontologoServiceImpl implements OdontologoService {
         return odontologoRepository.findAll();
     }
 
+
     //Modificar por id
     @Override
     public Odontologo modificar(Odontologo odontologo) {
@@ -42,11 +46,13 @@ public class OdontologoServiceImpl implements OdontologoService {
             return null;
     }
 
+
     //Eliminar por id
     @Override
     public void eliminar(Integer id) {
         odontologoRepository.deleteById(id);
     }
+
 
     //Buscar por id
     @Override
@@ -54,11 +60,5 @@ public class OdontologoServiceImpl implements OdontologoService {
         Odontologo odontologoEncontrado = odontologoRepository.findById(id).orElse(null);
         return odontologoEncontrado;
 
-
-//    //Método genérico para guardar odontologo
-//    public void guardarOdontologo(OdontologoDTO odontologoDTO){
-//        Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
-//        odontologoRepository.save(odontologo);
-//    }
     }
 }

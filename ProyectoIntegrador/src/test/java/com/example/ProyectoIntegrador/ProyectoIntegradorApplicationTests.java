@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegrador;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegrador.model.Domicilio;
 import com.example.ProyectoIntegrador.model.Odontologo;
 import com.example.ProyectoIntegrador.model.Paciente;
@@ -10,6 +11,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -51,7 +53,12 @@ class ProyectoIntegradorApplicationTests {
 		Domicilio domicilio2 = new Domicilio("Avenida San Martin", 2020, "Florida", "Buenos Aires");
 		Paciente paciente2 = pacienteService.agregar(new Paciente("Luciana", "Perez", "12456789", LocalDate.of(2021,10,21), domicilio2));
 
-		Assert.assertNotNull(pacienteService.buscarPorId(paciente2.getId()));
+		try{
+			Assert.assertNotNull(pacienteService.buscarPorId(paciente2.getId()));
+		}catch(ResourceNotFoundException ex){
+			System.out.println(ex);
+		}
+
 	}
 
 

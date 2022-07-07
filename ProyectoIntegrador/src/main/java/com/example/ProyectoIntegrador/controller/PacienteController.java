@@ -1,6 +1,7 @@
 package com.example.ProyectoIntegrador.controller;
 
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegrador.model.Paciente;
 import com.example.ProyectoIntegrador.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,12 @@ public class PacienteController {
     //Buscar por id
 
     @GetMapping("/{id}")
-    public ResponseEntity<Paciente> buscarPorId(@PathVariable Integer id){
-        return ResponseEntity.ok(pacienteService.buscarPorId(id));
+    public ResponseEntity<Paciente> buscarPorId(@PathVariable Integer id) throws ResourceNotFoundException{
+            Paciente pacienteEncontrado = pacienteService.buscarPorId(id);
+            if(pacienteEncontrado != null)
+                return ResponseEntity.ok(pacienteEncontrado);
+
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
 

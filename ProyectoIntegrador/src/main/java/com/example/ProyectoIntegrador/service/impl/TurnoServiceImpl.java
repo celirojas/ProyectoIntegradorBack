@@ -33,7 +33,7 @@ public class TurnoServiceImpl implements TurnoService {
 
 
 
-    //Métodos CRUD
+    /*-------------------------Métodos CRUD------------------------*/
 
 
     //GUARDAR
@@ -88,13 +88,5 @@ public class TurnoServiceImpl implements TurnoService {
         return turnoDTO;
     }
 
-
-    //Método genérico para guardar turno
-
-    /*public void guardarTurno(TurnoDTO turnoDTO){
-        Turno turno = mapper.convertValue(turnoDTO, Turno.class);
-        turnoRepository.save(turno);
-
-        */
 }
 

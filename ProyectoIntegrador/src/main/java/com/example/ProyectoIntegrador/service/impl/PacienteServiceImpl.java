@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegrador.service.impl;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegrador.model.Paciente;
 import com.example.ProyectoIntegrador.repository.PacienteRepository;
 import com.example.ProyectoIntegrador.service.PacienteService;
@@ -19,7 +20,7 @@ public class PacienteServiceImpl implements PacienteService {
     PacienteRepository pacienteRepository;
 
 
-    //Métodos CRUD
+    /*-------------------------Métodos CRUD------------------------*/
 
     //Guardar
     @Override
@@ -34,13 +35,10 @@ public class PacienteServiceImpl implements PacienteService {
         return pacienteRepository.findAll();
     }
 
-    //Modificar por id
+    //Modificar
     @Override
     public Paciente modificar(Paciente paciente) {
-        if(buscarPorId(paciente.getId()) != null)
             return pacienteRepository.save(paciente);
-        else
-            return null;
     }
 
     //Eliminar por id
@@ -52,17 +50,15 @@ public class PacienteServiceImpl implements PacienteService {
 
     //Buscar por id
     @Override
-    public Paciente buscarPorId(Integer id) {
+    public Paciente buscarPorId(Integer id) throws ResourceNotFoundException {
+
         Paciente pacienteEncontrado = pacienteRepository.findById(id).orElse(null);
-        return pacienteEncontrado;
+        if(pacienteEncontrado != null){
+            return pacienteEncontrado;
+        }
+        throw new ResourceNotFoundException("No se encontró el paciente con el id: " + id);
     }
 
 
 
-
-    //Método genérico para guardar paciente
-//    public void guardarPaciente(PacienteDTO pacienteDTO){
-//        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
-//        pacienteRepository.save(paciente);
-//    }
 }

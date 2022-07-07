@@ -13,3 +13,6 @@
  at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 5, column: 18] (through reference chain: com.example.ProyectoIntegrador.model.Paciente["fechaAlta"])
 [2022-07-0315:34:59] [ ERROR] [GlobalExceptionHandler:18] could not execute statement; SQL [n/a]; constraint ["FK4OKCQR9IQT2IW6XHY1PPSMO3L: PUBLIC.TURNOS FOREIGN KEY(PACIENTE_ID) REFERENCES PUBLIC.PACIENTES(ID) (1)"; SQL statement:
 delete from pacientes where id=? [23503-212]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-07-0710:04:48] [ ERROR] [GlobalExceptionHandler:18] No class com.example.ProyectoIntegrador.model.Paciente entity with id 9 exists!
+[2022-07-0710:06:18] [ ERROR] [GlobalExceptionHandler:18] No class com.example.ProyectoIntegrador.model.Odontologo entity with id 3 exists!
+[2022-07-0710:20:57] [ ERROR] [GlobalExceptionHandler:18] No se encontró el paciente con el id: 100
