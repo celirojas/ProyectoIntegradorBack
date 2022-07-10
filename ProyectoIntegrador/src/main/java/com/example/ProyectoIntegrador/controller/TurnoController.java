@@ -1,5 +1,7 @@
 package com.example.ProyectoIntegrador.controller;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
+import com.example.ProyectoIntegrador.model.Turno;
 import com.example.ProyectoIntegrador.model.dto.TurnoDTO;
 import com.example.ProyectoIntegrador.service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,13 @@ public class TurnoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TurnoDTO> buscarPorId(@PathVariable Integer id){
+    public ResponseEntity<TurnoDTO> buscarPorId(@PathVariable Integer id) throws ResourceNotFoundException {
         return ResponseEntity.ok(turnoService.buscarPorId(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<Turno> modificarTurno(@RequestBody Turno turno){
+        return ResponseEntity.ok(turnoService.modificar(turno));
     }
 
 }

@@ -23,6 +23,7 @@ public class Domicilio {
     @JsonIgnore
     private Paciente paciente;
 
+
     //Constructores
 
 
@@ -43,6 +44,8 @@ public class Domicilio {
 
     public Domicilio() {
     }
+
+
 
     //Métodos accesores
 

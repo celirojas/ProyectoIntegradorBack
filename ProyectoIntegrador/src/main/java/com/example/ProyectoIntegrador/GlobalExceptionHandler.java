@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegrador;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,5 +20,11 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity("Error " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 
+    }
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> procesarErroresNotFound(Exception ex, WebRequest req){
+        logger.error(ex.getMessage());
+
+        return new ResponseEntity("Error " + ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

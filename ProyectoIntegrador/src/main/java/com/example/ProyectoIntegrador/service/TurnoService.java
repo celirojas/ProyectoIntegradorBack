@@ -1,5 +1,7 @@
 package com.example.ProyectoIntegrador.service;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
+import com.example.ProyectoIntegrador.model.Turno;
 import com.example.ProyectoIntegrador.model.dto.TurnoDTO;
 
 import java.util.Set;
@@ -14,11 +16,11 @@ public interface TurnoService {
     Set<TurnoDTO> listar();
 
     //Modificar por id
-    //void modificar(TurnoDTO turnoDTO);
+    Turno modificar(Turno turno);
 
     //Eliminar por id
     void eliminar(Integer id);
 
     //Buscar por id
-    TurnoDTO buscarPorId(Integer id);
+    TurnoDTO buscarPorId(Integer id) throws ResourceNotFoundException;
 }

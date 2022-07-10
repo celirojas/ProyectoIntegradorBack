@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegrador.service.impl;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegrador.model.Turno;
 import com.example.ProyectoIntegrador.model.dto.TurnoDTO;
 import com.example.ProyectoIntegrador.repository.OdontologoRepository;
@@ -59,11 +60,10 @@ public class TurnoServiceImpl implements TurnoService {
 
     //MODIFICAR
 
-    //@Override
-//    public TurnoDTO modificar(TurnoDTO turnoDTO) {
-//        guardarTurno(turnoDTO);
-//        return turnoDTO;
-//    }
+    @Override
+    public Turno modificar(Turno turno) {
+        return turnoRepository.save(turno);
+    }
 
     //ELIMINAR
 
@@ -76,14 +76,14 @@ public class TurnoServiceImpl implements TurnoService {
     //BUSCAR POR ID
 
     @Override
-    public TurnoDTO buscarPorId(Integer id){
+    public TurnoDTO buscarPorId(Integer id) throws ResourceNotFoundException{
         Optional<Turno> turno = turnoRepository.findById(id);
         TurnoDTO turnoDTO = null;
 
         if(turno.isPresent()){
             turnoDTO = mapper.convertValue(turno, TurnoDTO.class);
         } else{
-            System.out.println("El turno buscado no existe.");
+            throw new ResourceNotFoundException("El turno buscado no existe.");
         }
         return turnoDTO;
     }

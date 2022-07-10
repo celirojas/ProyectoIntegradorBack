@@ -16,3 +16,8 @@ delete from pacientes where id=? [23503-212]]; nested exception is org.hibernate
 [2022-07-0710:04:48] [ ERROR] [GlobalExceptionHandler:18] No class com.example.ProyectoIntegrador.model.Paciente entity with id 9 exists!
 [2022-07-0710:06:18] [ ERROR] [GlobalExceptionHandler:18] No class com.example.ProyectoIntegrador.model.Odontologo entity with id 3 exists!
 [2022-07-0710:20:57] [ ERROR] [GlobalExceptionHandler:18] No se encontró el paciente con el id: 100
+[2022-07-0917:52:49] [ ERROR] [GlobalExceptionHandler:26] No se encontró el paciente con el id: 100
+[2022-07-1015:35:22] [ ERROR] [GlobalExceptionHandler:26] No se encontró el odontologo con el id: 100
+[2022-07-1015:37:35] [ ERROR] [GlobalExceptionHandler:19] No class com.example.ProyectoIntegrador.model.Odontologo entity with id 3 exists!
+[2022-07-1015:40:29] [ ERROR] [GlobalExceptionHandler:26] No se encontró el paciente con el id: 100
+[2022-07-1015:44:42] [ ERROR] [GlobalExceptionHandler:26] El turno buscado no existe.

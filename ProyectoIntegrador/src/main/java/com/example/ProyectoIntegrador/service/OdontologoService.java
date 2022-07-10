@@ -1,6 +1,7 @@
 package com.example.ProyectoIntegrador.service;
 
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegrador.model.Odontologo;
 
 import java.util.List;
@@ -21,5 +22,5 @@ public interface OdontologoService {
     void eliminar(Integer id);
 
     //Buscar por id
-    Odontologo buscarPorId(Integer id);
+    Odontologo buscarPorId(Integer id) throws ResourceNotFoundException;
 }

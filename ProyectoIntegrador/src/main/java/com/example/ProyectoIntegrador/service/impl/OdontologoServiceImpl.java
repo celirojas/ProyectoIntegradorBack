@@ -1,6 +1,8 @@
 package com.example.ProyectoIntegrador.service.impl;
 
+import com.example.ProyectoIntegrador.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegrador.model.Odontologo;
+import com.example.ProyectoIntegrador.model.Paciente;
 import com.example.ProyectoIntegrador.repository.OdontologoRepository;
 import com.example.ProyectoIntegrador.service.OdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,9 +18,6 @@ public class OdontologoServiceImpl implements OdontologoService {
 
     @Autowired
     OdontologoRepository odontologoRepository;
-
-    @Autowired
-    ObjectMapper mapper;
 
     /*-------------------------Métodos CRUD------------------------*/
 
@@ -37,13 +36,10 @@ public class OdontologoServiceImpl implements OdontologoService {
     }
 
 
-    //Modificar por id
+    //Modificar
     @Override
     public Odontologo modificar(Odontologo odontologo) {
-        if(buscarPorId(odontologo.getId()) != null)
             return odontologoRepository.save(odontologo);
-        else
-            return null;
     }
 
 
@@ -56,9 +52,12 @@ public class OdontologoServiceImpl implements OdontologoService {
 
     //Buscar por id
     @Override
-    public Odontologo buscarPorId(Integer id) {
+    public Odontologo buscarPorId(Integer id) throws ResourceNotFoundException {
         Odontologo odontologoEncontrado = odontologoRepository.findById(id).orElse(null);
-        return odontologoEncontrado;
+        if(odontologoEncontrado != null){
+            return odontologoEncontrado;
+        }
+        throw new ResourceNotFoundException("No se encontró el odontologo con el id: " + id);
 
     }
 }
